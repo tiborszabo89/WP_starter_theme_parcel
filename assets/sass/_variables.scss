@@ -1,0 +1,56 @@
+// =================================================================
+// Custom variables
+// =================================================================
+
+// 1. Colors
+$primary-color: #1171B4;
+$primary-color-dark: #213F63;
+$primary-color-light: #A9D6E7;
+$primary-text-color: #292F2F;
+$secondary-text-color: #1A171B;
+$primary-link-color: #D74319;
+$secondary-link-color: #DB4E29;
+
+// Body background:
+$body-bg: #FFFFFF;
+
+// 2. Fonts
+// ==========================================================================
+
+// $example-font-path: "../fonts/example/";
+
+// 3. Global
+// ==========================================================================
+
+// Media Query Ranges
+$xsmall-screen-down: 575px;
+$small-screen-down: 767px;
+$medium-screen-down: 991px;
+$large-screen-down: 1199px;
+
+$small-screen: 576px;
+$medium-screen: 768px;
+$large-screen: 992px;
+$xlarge-screen: 1200px;
+
+$small-and-up: "screen and (min-width: #{$small-screen})";
+$medium-and-up: "screen and (min-width: #{$medium-screen})";
+$large-and-up: "screen and (min-width: #{$large-screen})";
+$xlarge-and-up: "screen and (min-width: #{$xlarge-screen})";
+$xsmall-and-down: "screen and (max-width: #{$xsmall-screen-down})";
+$small-and-down: "screen and (max-width: #{$small-screen-down})";
+$medium-and-down: "screen and (max-width: #{$medium-screen-down})";
+$large-and-down: "screen and (max-width: #{$large-screen-down})";
+
+// 4. Typography
+
+// Set HTML font size
+$html-font-size: 16px;
+
+// Set font size
+$xs-font-size: 0.75rem;
+$s-font-size: 0.875rem;
+$m-font-size: 0.975rem;
+$l-font-size: 1rem;
+$xl-font-size: 1.125rem;
+$xxl-font-size: 1.875rem;

@@ -1,0 +1,174 @@
+@mixin transform($t...){
+  -webkit-transform: $t;
+  -moz-transform: $t;
+  -o-transform: $t;
+  -ms-transform: $t;
+  transform: $t;
+}
+
+@mixin transition($t...){
+  -webkit-transition: $t;
+  -moz-transition: $t;
+  -o-transition: $t;
+  -ms-transition: $t;
+  transition: $t;
+}
+
+@mixin background-size($s){
+  -webkit-background-size: $s;
+  -moz-background-size: $s;
+  -o-background-size: $s;
+  background-size: $s;
+}
+
+@mixin box-shadow($shadow){
+  -webkit-box-shadow: $shadow;
+  -moz-box-shaodw: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin placeholder($color){
+  &::-webkit-input-placeholder{
+    color: $color;
+  }
+
+  &::-moz-placeholder{
+    color: $color;
+  }
+
+  &:-ms-input-placeholder{
+    color: $color;
+  }
+
+  &:-moz-placeholder{
+    color: $color;
+  }
+}
+
+// rem calculator
+// usage example: font-size: rem(16); 
+
+$browser-context: 16; // Default
+
+@function rem($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}rem;
+}
+
+// line height calculator
+// usage example: line-height: lh(20px, 16px);
+
+@function lh($line-height, $font-size) {
+  @return $line-height / $font-size;
+}  
+
+// media queries
+
+$breakpoints: (
+  xs: 320px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  hd: 1440px,
+  fhd: 1920px
+);
+// Respond above.
+@mixin up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+
+//-------------------------------------------------
+// @include up(sm) {
+//   .element {
+//     font-weight: bold;
+//   }
+// }
+//-------------------------------------------------
+
+@mixin down($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+//-------------------------------------------------
+// @include down(sm) {
+//   .element {
+//     font-weight: bold;
+//   }
+// }
+//-------------------------------------------------
+
+
+// between
+@mixin betw($lower, $upper) {
+
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+    $lower-breakpoint: map-get($breakpoints, $lower);
+    $upper-breakpoint: map-get($breakpoints, $upper);
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+      @content;
+    }
+  } @else {
+    @if (map-has-key($breakpoints, $lower) == false) {
+      @warn 'Your lower breakpoint was invalid: #{$lower}.';
+    }
+    @if (map-has-key($breakpoints, $upper) == false) {
+      @warn 'Your upper breakpoint was invalid: #{$upper}.';
+    }
+  }
+}
+//-------------------------------------------------
+// @include betw(sm, md) {
+//   .element {
+//     font-weight: bold;
+//   }
+// }
+//-------------------------------------------------
+
+
+// Define vertical, horizontal, or both position
+@mixin center($position) {
+  position: absolute;
+  
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+/* Using the mixin
+.foo {
+  @include center(both);
+}
+.foo-parent {
+  position: relative;
+}
+*/

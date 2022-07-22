@@ -1,0 +1,11 @@
+{
+  "name": "timbo/timbo-starter-theme-sass",
+  "type": "wordpress-theme",
+  "homepage": "http://webszolgaltatas.com/",
+  "licence": "MIT",
+  "description": "Timbo Starter Theme with Sass",
+  "keywords": ["theme", "timbo"],
+  "require": {
+    "johnpbloch/wordpress": "^4.9"
+  }
+}
