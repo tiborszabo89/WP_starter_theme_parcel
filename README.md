@@ -1,4 +1,4 @@
-# Timbo Starter Wordpress Theme with Parcel and Vue.js
+# Starter Wordpress Theme with Parcel and Vue.js
 
 ## Install
 1. Run in theme root: `npm install`
@@ -19,3 +19,4 @@
 
 ### Credits
 * [Timbo](http://webszolgaltatas.com/)
+* https://github.com/Joci933
